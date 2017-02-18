@@ -12,7 +12,6 @@ class Masonry {
     this.appendItems(items);
   }
   appendItems(items) {
-    //$(items).addClass('invisible');
     items.forEach( item => {
       const masonryItem = $('<div id="masonry-item-'+items.indexOf(item)+'" class="masonry-item invisible"></div>');
       $(item).appendTo(masonryItem);
@@ -23,7 +22,6 @@ class Masonry {
     this.masonry()
   }
   masonry() {
-    //$(this.items).addClass('invisible');
     $(this.container).innerWidth('100%');
     this.columns = Math.floor($(this.container).innerWidth()/this.colWidth) || 1;
 
