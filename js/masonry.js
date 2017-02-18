@@ -1,7 +1,7 @@
 class Masonry {
   constructor(container, items){
     this.container = container;
-    this.items = [];
+    this.masonryItems = [];
     this.columns = 0;
     this.colHeights = [];
     this.itemHeights = {};
@@ -13,12 +13,12 @@ class Masonry {
   }
   appendItems(items) {
     items.forEach( item => {
-      const masonryItem = $('<div id="masonry-item-'+items.indexOf(item)+'" class="masonry-item invisible"></div>');
+      const masonryItem = $('<div id="masonry-item-'+this.masonryItems.length+'" class="masonry-item invisible"></div>');
       $(item).appendTo(masonryItem);
-      this.items.push(masonryItem);
+      this.masonryItems.push(masonryItem);
       this.itemHeights[$(masonryItem).attr('id')]=$(masonryItem).appendTo(this.container).outerHeight();
     });
-    this.colWidth = $(this.items[0]).outerWidth(true);
+    this.colWidth = $(this.masonryItems[0]).outerWidth(true);
     this.masonry()
   }
   masonry() {
@@ -30,7 +30,7 @@ class Masonry {
     for(let i=0;i<this.columns;i++){
       this.colHeights[i] = 0;
     }
-    this.items.forEach( item => {
+    this.masonryItems.forEach( item => {
       const colIndex = this.colHeights.indexOf(Math.min.apply(this, this.colHeights));
       const absLeft = colIndex * this.colWidth;
       this.layoutPositions[$(item).attr('id')] = {
@@ -43,7 +43,11 @@ class Masonry {
   }
   redoLayout() {
     for(const id in this.layoutPositions) {
-      $('#'+id).css('position','absolute').css('left',this.layoutPositions[id].left).css('top', this.layoutPositions[id].top).removeClass('invisible');
+      $('#'+id)
+        .css('position','absolute')
+        .css('left',this.layoutPositions[id].left)
+        .css('top', this.layoutPositions[id].top)
+        .removeClass('invisible');
     }
   }
   redoMasonry() {

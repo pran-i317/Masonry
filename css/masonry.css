@@ -6,6 +6,6 @@
   display: inline-flex;
   transition: .5s ease-in-out;
 }
-.invisible {
+.masonry .masonry-item.invisible {
   display: none;
 }
