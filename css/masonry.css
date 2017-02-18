@@ -6,6 +6,33 @@
   display: inline-flex;
   transition: .5s ease-in-out;
 }
-.invisible {
+.masonry .masonry-item.invisible {
   display: none;
+}
+
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.masonry .masonry-item.fade-in {
+  -webkit-animation-name: fade-in;
+  animation-name: fade-in;
+  animation-duration: .25s;
+  -webkit-animation-duration: .25s;
 }
