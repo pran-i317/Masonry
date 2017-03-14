@@ -44,11 +44,10 @@ class Masonry {
   redoLayout() {
     for(const id in this.layoutPositions) {
       $('#'+id)
-        .css('position', 'absolute')
+        .css('position','absolute')
         .css('left',this.layoutPositions[id].left)
         .css('top', this.layoutPositions[id].top)
-        .removeClass('invisible')
-        .addClass('fade-in');
+        .removeClass('invisible');
     }
   }
   redoMasonry() {
